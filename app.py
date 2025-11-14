@@ -46,7 +46,7 @@ def load_efficientnet(path: str, device: str = "cpu"):
     # create model architecture
     eff = timm.create_model("efficientnet_b0", pretrained=False, num_classes=NUM_CLASSES)
     # load weights
-    state = torch.load(path, map_location=device)
+    state = torch.load(path, map_location=device, weights_only=False)
     # If the saved file is a state_dict or a raw model path, handle both
     if isinstance(state, dict) and ("state_dict" in state):
         state = state["state_dict"]
